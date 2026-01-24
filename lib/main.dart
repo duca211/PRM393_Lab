@@ -3,6 +3,7 @@ import 'package:flutter_application_2/DartCode/dastFirst.dart';
 import 'package:flutter_application_2/DartCode/vidu.dart';
 import 'package:flutter_application_2/Lab1/lab1.dart';
 import 'package:flutter_application_2/Lab4/lab4.dart';
+import 'package:flutter_application_2/Lab5/HomePage.dart';
 
 void Test() {
   // List<int> nums = ExamTest.genRandom(10);
@@ -12,9 +13,19 @@ void Test() {
   // s.Name = "Nguyen Van A";
 }
 
+// void main() {
+//   //Test();
+//   runApp(Lab4());
+// }
+
 void main() {
-  //Test();
-  runApp(Lab4());
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.deepPurple, useMaterial3: true),
+      home: HomeScreen(),
+    ),
+  );
 }
 
 class MyApp2 extends StatelessWidget {
