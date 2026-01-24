@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/DartCode/dastFirst.dart';
-import 'package:flutter_application_2/DartCode/lab21.dart';
+import 'package:flutter_application_2/DartCode/vidu.dart';
+import 'package:flutter_application_2/Lab1/lab1.dart';
+import 'package:flutter_application_2/Lab4/lab4.dart';
 
 void Test() {
   // List<int> nums = ExamTest.genRandom(10);
@@ -11,8 +13,8 @@ void Test() {
 }
 
 void main() {
-  Test();
-  runApp(MyApp2(null));
+  //Test();
+  runApp(Lab4());
 }
 
 class MyApp2 extends StatelessWidget {
@@ -30,44 +32,6 @@ class MyApp2 extends StatelessWidget {
             backgroundColor: Colors.greenAccent,
           ),
           body: Text("Hello everyone"),
-        ),
-      ),
-    );
-  }
-}
-
-class MyApp1 extends StatelessWidget {
-  const MyApp1({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Lab 1 Demo'),
-          backgroundColor: Colors.deepPurple,
-        ),
-        body: const Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.flutter_dash, size: 80, color: Colors.deepPurple),
-              SizedBox(height: 20),
-              Text(
-                'Welcome to Flutter!',
-                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Your first customized layout',
-                style: TextStyle(fontSize: 18, color: Colors.black54),
-              ),
-            ],
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: null,
-          backgroundColor: Colors.deepPurple,
-          child: Icon(Icons.add),
         ),
       ),
     );
