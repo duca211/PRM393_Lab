@@ -4,7 +4,7 @@ class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    // test commit
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
