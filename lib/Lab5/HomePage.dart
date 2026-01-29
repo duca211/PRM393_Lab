@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/model/Model.dart';
+import 'package:flutter_application_2/model/Movie.dart';
 import 'package:flutter_application_2/Lab5/MovieDetail.dart';
 
 class HomeScreen extends StatelessWidget {
