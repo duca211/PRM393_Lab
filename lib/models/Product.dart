@@ -51,7 +51,7 @@ class Product {
         isFavorite: true,
       ),
       Product(
-        id: "01",
+        id: "02",
         name: "Product 2",
         description:
             "Can't define a const constructor for a class with non-final fields. Try making all of the fields final, or removing the keyword 'const' from the constructor.",
@@ -60,7 +60,7 @@ class Product {
         isFavorite: false,
       ),
       Product(
-        id: "01",
+        id: "03",
         name: "Product 3",
         description:
             "Can't define a const constructor for a class with non-final fields. Try making all of the fields final, or removing the keyword 'const' from the constructor.",
@@ -69,7 +69,7 @@ class Product {
         isFavorite: true,
       ),
       Product(
-        id: "01",
+        id: "04",
         name: "Product 4",
         description:
             "Can't define a const constructor for a class with non-final fields. Try making all of the fields final, or removing the keyword 'const' from the constructor.",
@@ -78,7 +78,7 @@ class Product {
         isFavorite: true,
       ),
       Product(
-        id: "01",
+        id: "05",
         name: "Product 5",
         description:
             "Can't define a const constructor for a class with non-final fields. Try making all of the fields final, or removing the keyword 'const' from the constructor.",
