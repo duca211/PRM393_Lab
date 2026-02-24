@@ -1,29 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lab_exam/models/Product.dart';
+import 'package:lab_exam/models/Category.dart';
 import 'package:lab_exam/services/ProductListViewModel.dart';
 
 class ProductFormScreen extends ConsumerStatefulWidget {
-  final Product? product; // Nếu có dữ liệu là chế độ Sửa, null là Thêm mới
+  final Product? product;
 
   const ProductFormScreen({super.key, this.product});
 
   @override
-  ConsumerState<ProductFormScreen> createState() => _ProductFormScreenState();
+  ConsumerState<ProductFormScreen> createState() => _ProductFormScreenState(); // Tên ở đây...
 }
 
+// ...Phải khớp với tên ở đây
 class _ProductFormScreenState extends ConsumerState<ProductFormScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  // Widget Input Controllers
   late TextEditingController _nameController;
   late TextEditingController _priceController;
   late TextEditingController _descController;
 
+  String? _selectedCaId;
+
   @override
   void initState() {
     super.initState();
-    // Khởi tạo giá trị ban đầu cho các ô nhập liệu
     _nameController = TextEditingController(text: widget.product?.name ?? '');
     _priceController = TextEditingController(
       text: widget.product?.price.toString() ?? '0',
@@ -31,6 +33,7 @@ class _ProductFormScreenState extends ConsumerState<ProductFormScreen> {
     _descController = TextEditingController(
       text: widget.product?.description ?? '',
     );
+    _selectedCaId = widget.product?.caId ?? 'ca01';
   }
 
   @override
@@ -43,15 +46,13 @@ class _ProductFormScreenState extends ConsumerState<ProductFormScreen> {
 
   void _saveForm() {
     if (_formKey.currentState!.validate()) {
-      // Tạo object Product mới từ dữ liệu Input
       final newProduct = Product(
         id:
             widget.product?.id ??
             DateTime.now().millisecondsSinceEpoch.toString(),
+        caId: _selectedCaId!,
         name: _nameController.text,
-        price: int.parse(
-          _priceController.text,
-        ), // Chuyển đổi về kiểu int theo model
+        price: int.parse(_priceController.text),
         description: _descController.text,
         imageUrl: widget.product?.imageUrl ?? "assets/images/avatar7.jpg",
         isFavorite: widget.product?.isFavorite ?? false,
@@ -65,7 +66,7 @@ class _ProductFormScreenState extends ConsumerState<ProductFormScreen> {
         viewModel.updateProduct(newProduct);
       }
 
-      Navigator.pop(context); // Quay lại trang danh sách
+      Navigator.pop(context);
     }
   }
 
@@ -81,6 +82,30 @@ class _ProductFormScreenState extends ConsumerState<ProductFormScreen> {
           key: _formKey,
           child: ListView(
             children: [
+              DropdownButtonFormField<String>(
+                value: _selectedCaId,
+                decoration: const InputDecoration(labelText: "Category"),
+                items: CategoryProduct.getCategories().map((category) {
+                  return DropdownMenuItem(
+                    value: category.caId,
+                    child: Row(
+                      children: [
+                        category.icon,
+                        const SizedBox(width: 10),
+                        Text(category.caName),
+                      ],
+                    ),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    _selectedCaId = value;
+                  });
+                },
+                validator: (value) =>
+                    value == null ? "Select a category" : null,
+              ),
+              const SizedBox(height: 10),
               TextFormField(
                 controller: _nameController,
                 decoration: const InputDecoration(labelText: "Product Name"),
@@ -90,7 +115,7 @@ class _ProductFormScreenState extends ConsumerState<ProductFormScreen> {
               TextFormField(
                 controller: _priceController,
                 decoration: const InputDecoration(labelText: "Price"),
-                keyboardType: TextInputType.number, // Hiển thị bàn phím số
+                keyboardType: TextInputType.number,
                 validator: (value) => int.tryParse(value!) == null
                     ? "Enter a valid number"
                     : null,

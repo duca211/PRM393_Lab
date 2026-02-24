@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lab_exam/models/Product.dart';
 import 'package:lab_exam/services/GlobalStateService.dart';
 import 'package:lab_exam/services/ProductListViewModel.dart';
+import 'package:lab_exam/ui/widgets/CustomerWidget.dart';
 import 'ProductFormScreen.dart';
 
 class ProductListpage extends ConsumerWidget {
@@ -14,7 +15,9 @@ class ProductListpage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.menu),
+        leading:
+            //const Icon(Icons.menu),
+            Category2Menu(),
         title: const Center(child: Text("Product List")),
         actions: [
           TextButton(
