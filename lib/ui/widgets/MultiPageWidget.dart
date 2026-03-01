@@ -37,12 +37,12 @@ class NavigationExample extends ConsumerWidget {
             //const Icon(Icons.menu),
             Category2Menu(),
         title: const Center(child: Text("Product List")),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.amber,
       ),
       body: <Widget>[
         /// Home page
-        ProductList(),
-        AboutBody(),
+        ProductListpage(),
+        ProductListGridViewResponsive(),
         AboutBody(),
 
         /// Notifications page
